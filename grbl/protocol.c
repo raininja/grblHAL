@@ -141,6 +141,7 @@ bool protocol_main_loop(bool cold_start)
     // Ensure spindle and coolant is switched off on a cold start
     if(cold_start) {
         hal.spindle_set_state((spindle_state_t){0}, 0.0f);
+        // is this going to error if we have no coolant?
         hal.coolant_set_state((coolant_state_t){0});
     }
 
@@ -904,4 +905,3 @@ void protocol_execute_noop (uint_fast16_t state)
 {
     (void)state;
 }
-

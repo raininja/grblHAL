@@ -999,7 +999,10 @@ static bool driver_setup (settings_t *settings)
 
  // Coolant init
 
+#ifdef COOLANT_FLOOD_PORT
     COOLANT_FLOOD_PORT->DIR |= COOLANT_FLOOD_BIT;
+#endif
+
 #ifdef COOLANT_MIST_PORT
     COOLANT_MIST_PORT->DIR |= COOLANT_MIST_BIT;
 #endif

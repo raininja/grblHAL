@@ -1,6 +1,6 @@
 ## Trinamic TMC2130 stepper driver plugin
 
-This plugin adds settings, M-Code extensions and reports for TMC1230 stepper drivers.
+This plugin adds settings, M-Code extensions and reports for TMC2130 stepper drivers.
 
 I supports Marlin-style M-codes such as `M122`, `M911`, `M912`, `M913` and `M914` - some with extensions and some with sligthly different syntax.
 

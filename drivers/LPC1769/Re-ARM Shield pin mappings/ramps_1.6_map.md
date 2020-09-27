@@ -1,6 +1,6 @@
 ## LPC176x Driver, Re-ARM boards
 
-### Pin assignmets for [RAMPS 1.6](https://reprap.org/wiki/RAMPS_1.6) board.
+### Pin assignments for [RAMPS 1.6](https://reprap.org/wiki/RAMPS_1.6) board.
 
 __Note 1:__ Limit pins are not interrupt capable so hard limits cannot be enabled.  
 __Note 2:__ Limit pins are wired to external pullup resistors, MCU pulldown cannot be used.  
@@ -20,7 +20,7 @@ Uncomment `#define BOARD_RAMPS16` in [driver.h](../main/driver.h) to use this ma
                                             GND [  ]    A    [10] P2.5 - Spindle PWM
                                             GND [  ]    R    [09] P2.4
                                             VIN [  ]    M    [08] P2.7
-                                                        
+
                                   X step - P2.1 [A0]         [07] -
                                   X dir - P0.11 [A1]    L    [06] P1.21
                                Y enable - P0.19 [A2]    P    [05] P1.19 - Spindle dir

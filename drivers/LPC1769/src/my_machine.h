@@ -21,8 +21,9 @@
 
 // NOTE: Only one board may be enabled!
 // If none is enabled pin mappings from generic_map.h will be used
-#define SMOOTHIEBOARD
+// #define SMOOTHIEBOARD
 //#define BOARD_RAMPS_16
+#define BOARD_BTT_SKR_14
 
 // Configuration
 // Uncomment to enable, for some a value > 1 may be assigned, if so the default value is shown.
