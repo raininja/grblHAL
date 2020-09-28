@@ -36,3 +36,6 @@ $RECYCLE.BIN/
 
 # Data files
 SKR_1_4_M43_output.txt
+
+# plugin code is copied to activate, do not track copy
+drivers/LPC1769/src/sdcard/sdcard.*
