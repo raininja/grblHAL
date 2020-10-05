@@ -24,7 +24,8 @@
 // NOTE: LPCOPen lacks library support for PWM!
 
 #include "chip.h"
-#include "pwm_driver.h"
+#include ".\pwm_driver.h"
+
 
 //#include "grbl.h"
 
