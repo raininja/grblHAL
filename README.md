@@ -1,69 +1,31 @@
-## grblHAL ##
+### SKR 1.4 variant
 
-grblHAL has [many extensions](https://github.com/terjeio/grblHAL/wiki) that may cause issues with some senders. As a workaround for these a [compile time option](https://github.com/terjeio/grblHAL/wiki/Changes-from-grbl-1.1#workaround) has been added that disables extensions selectively. 
+This fork is for use with the BTT SKR 1.4 line of boards. 
 
-Windows users may try [my sender](https://github.com/terjeio/Grbl-GCode-Sender), binary releases can be found [here](https://github.com/terjeio/Grbl-GCode-Sender/releases). It has been written to complement grblHAL and has features such as proper keyboard jogging, automatic reconfiguration of DRO display for up to 6 axes, lathe mode including conversational G-Code generation, 3D rendering, macro support etc. etc.
+For this build I'm using [vscode](https://code.visualstudio.com/) and [platformio](https://platformio.org/).
 
----
+original README continues below.
 
-__NOTE:__ Arduino drivers has now been converted to Arduino libraries, [installation and compilation procedure](https://github.com/terjeio/grblHAL/wiki/Compiling-GrblHAL) has been changed!
 
----
+## LPC1769GrblDriver
 
-Latest build date is 20200923, see the [changelog](changelog.md) for details.
+A GrblHAL driver for the NXP LPC176x processors.
 
----
+Loosely based on the official [grbl-LPC port](https://github.com/gnea/grbl-LPC).
 
-grblHAL is a no-compromise, high performance, low cost alternative to parallel-port-based motion control for CNC milling based on the [Arduino version of grbl](https://github.com/gnea/grbl). It is mainly aimed at ARM processors \(or other 32-bit MCUs\) with ample amounts of RAM and flash \(compared to AVR 328p\) and requires a [hardware driver](drivers/ReadMe.md) to be functional.
-Currently drivers are available for 13 different processors all of which share the same core.
+See the Wiki-page for [compiling grblHAL](https://github.com/terjeio/grblHAL/wiki/Compiling-GrblHAL) for instructions for how to import the project, configure the driver and compile.
 
-The driver interface \(HAL\) has entry points for extending the supported M-codes (adding user defined M-codes) as well as an entry point for the driver to execute G-code when Grbl is in idle or jog state.
-It also supports [plugins](plugins/README.md) for extensions, a growing number is already available.
+Available driver options can be found [here](src/my_machine.h).
 
-HAL = Hardware Abstraction Layer
+*** Incomplete - needs more work on pin assignments ***
 
-The controller is written in highly optimized C utilizing features of the supported processors to achieve precise timing and asynchronous operation. It is able to maintain up to 300kHz<sup>1</sup> of stable, jitter free control pulses.
+__Update 2020-01-01:__ Added [board map](./Re-ARM%20Shield%20pin%20mappings/ramps_1.6_map.md) file for [Ramps 1.6](https://reprap.org/wiki/RAMPS_1.6) on [Re-ARM board](https://www.panucatt.com/Re_ARM_for_RAMPS_p/ra1768.htm) hacked for programming via Segger J-Link. Improved pin assignment handling and fixed some bugs. USB comms and SD card seems to be working ok for this board, however only limited testing done.
 
-It accepts standards-compliant g-code and has been tested with the output of several CAM tools with no problems. Arcs, circles and helical motion are fully supported, as well as, all other primary g-code commands. Macro functions, variables, and some canned cycles are not supported, but we think GUIs can do a much better job at translating them into straight g-code anyhow.
+__Update 2019-08-08:__ Changed IDE to [MCUXpresso v11](https://www.nxp.com/design/software/development-software/mcuxpresso-software-and-tools/mcuxpresso-integrated-development-environment-ide:MCUXpresso-IDE) and linked against [LPCOpen development platform](https://www.nxp.com/design/microcontrollers-developer-resources/lpcopen-libraries-and-examples/lpcopen-software-development-platform-lpc17xx:LPCOPEN-SOFTWARE-FOR-LPC17XX) libraries. I2C EEPROM on [OM13085 LPCXpresso board](https://www.nxp.com/design/microcontrollers-developer-resources/lpc-microcontroller-utilities/lpcxpresso-board-for-lpc1769-with-cmsis-dap-probe:OM13085) and SD card supported. 
 
-Grbl includes full acceleration management with look ahead. That means the controller will look up to 16 motions into the future and plan its velocities ahead to deliver smooth acceleration and jerk-free cornering.
+Currently tested running on a OM13085 board with oscilloscope only. Communication is configured via CMSIS-DAP VCOM connected to UART0, code for "native" USB VCOM provided but untested.
 
-This is a port/rewrite of [grbl 1.1f](https://github.com/gnea/grbl) and should be compatible with GCode senders compliant with the specifications for that version. It should be possible to change default compile-time configurations if problems arise, eg. the default serial buffer sizes has been increased in some of the [drivers](drivers/ReadMe.md) provided.
-
-<sup>1</sup> Driver/processor dependent.
-
-***
-
-```
-List of Supported G-Codes:
-  - Non-Modal Commands: G4, G10L2, G10L20, G28, G30, G28.1, G30.1, G53, G92, G92.1
-  - Additional Non-Modal Commands: G10L1*, G10L10*, G10L11*
-  - Motion Modes: G0, G1, G2, G3, G5, G38.2, G38.3, G38.4, G38.5, G80, G33*
-  - Canned cycles: G73, G81, G82, G83, G85, G86, G89, G98, G99
-  - Repetitive cycles: G76*
-  - Feed Rate Modes: G93, G94, G95*, G96*, G97*
-  - Unit Modes: G20, G21
-  - Scaling: G50, G51
-  - Lathe modes: G7*, G8*
-  - Distance Modes: G90, G91
-  - Arc IJK Distance Modes: G91.1
-  - Plane Select Modes: G17, G18, G19
-  - Tool Length Offset Modes: G43*, G43.1, G43.2*, G49
-  - Cutter Compensation Modes: G40
-  - Coordinate System Modes: G54, G55, G56, G57, G58, G59, G59.1, G59.2, G59.3
-  - Control Modes: G61
-  - Program Flow: M0, M1, M2, M30, M60
-  - Coolant Control: M7, M8, M9
-  - Spindle Control: M3, M4, M5
-  - Tool Change: M6* (Two modes possible: manual** - supports jogging, ATC), M61
-  - Switches: M49, M50, M51, M53
-  - Output control***: M62, M63, M64, M65, M66, M67, M68
-  - Valid Non-Command Words: A*, B*, C*, F, H*, I, J, K, L, N, P, Q*, R, S, T, X, Y, Z
-
-  *  driver/configuration dependent.
-  ** requires compatible GCode sender due to protocol extensions, new state and RT command.
-  *** number of outputs supported dependent on driver implementation.
-```
+__NOTE:__ earlier commits of this driver are full of bugs! Notably the bitbanding for GPIO is allocated in the SRAM region for this processor, _not_ PERI region...
 
 ---
-2020-09-13
+2020-10-05
