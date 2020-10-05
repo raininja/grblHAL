@@ -565,29 +565,32 @@ static spindle_state_t spindleGetState (void)
 // end spindle code
 
 // Start/stop coolant (and mist if enabled)
-static void coolantSetState (coolant_state_t mode)
-{
-    mode.value ^= settings.coolant_invert.mask;
-    BITBAND_GPIO(COOLANT_FLOOD_PORT->PIN, COOLANT_FLOOD_PIN) = mode.flood;
-#ifdef COOLANT_MIST_PORT
-    BITBAND_GPIO(COOLANT_MIST_PORT->PIN, COOLANT_MIST_PIN) = mode.mist;
-#endif
-}
+#ifdef COOLANT_FLOOD_ENABLE
 
-// Returns coolant state in a coolant_state_t variable
-static coolant_state_t coolantGetState (void)
-{
-    coolant_state_t state = {0};
+    static void coolantSetState (coolant_state_t mode)
+    {
+        mode.value ^= settings.coolant_invert.mask;
+        BITBAND_GPIO(COOLANT_FLOOD_PORT->PIN, COOLANT_FLOOD_PIN) = mode.flood;
+    #ifdef COOLANT_MIST_PORT
+        BITBAND_GPIO(COOLANT_MIST_PORT->PIN, COOLANT_MIST_PIN) = mode.mist;
+    #endif
+    }
 
-    state.flood = (COOLANT_FLOOD_PORT->PIN & COOLANT_FLOOD_BIT) != 0;
-#ifdef COOLANT_MIST_PORT
-    state.mist  = (COOLANT_MIST_PORT->PIN & COOLANT_MIST_BIT) != 0;
-#endif
-    state.value ^= settings.coolant_invert.mask;
+    // Returns coolant state in a coolant_state_t variable
+    static coolant_state_t coolantGetState (void)
+    {
+        coolant_state_t state = {0};
 
-    return state;
-}
+        state.flood = (COOLANT_FLOOD_PORT->PIN & COOLANT_FLOOD_BIT) != 0;
+    #ifdef COOLANT_MIST_PORT
+        state.mist  = (COOLANT_MIST_PORT->PIN & COOLANT_MIST_BIT) != 0;
+    #endif
+        state.value ^= settings.coolant_invert.mask;
 
+        return state;
+    }
+
+#endif 
 // Helper functions for setting/clearing/inverting individual bits atomically (uninterruptable)
 static void bitsSetAtomic (volatile uint_fast16_t *ptr, uint_fast16_t bits)
 {
@@ -1073,8 +1076,10 @@ bool driver_init (void) {
     hal.limits_enable = limitsEnable;
     hal.limits_get_state = limitsGetState;
 
+#ifdef COOLANT_FLOOD_ENABLED
     hal.coolant_set_state = coolantSetState;
     hal.coolant_get_state = coolantGetState;
+#endif
 
     hal.probe_get_state = probeGetState;
     hal.probe_configure_invert_mask = probeConfigure;

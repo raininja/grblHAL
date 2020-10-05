@@ -4,3 +4,6 @@
 [submodule "externals/NXP_LPC"]
 	path = externals/NXP_LPC
 	url = https://github.com/ARM-software/NXP_LPC.git
+[submodule "externals/lpc_chip_175x_6x"]
+	path = externals/lpc_chip_175x_6x
+	url = https://github.com/raininja/lpc_chip_175x_6x.git

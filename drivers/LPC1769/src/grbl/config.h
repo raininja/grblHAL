@@ -578,6 +578,7 @@
 // positive direction.
 //#define DEFAULT_PARKING_ENABLE // Default disabled. Uncomment to enable.
 
+// #define COOLANT_FLOOD_ENABLE
 // End default values for run time configurable settings
 
 #endif // DEFAULT_HOMING_ENABLE

@@ -1,3 +1,12 @@
+### SKR 1.4 variant
+
+This fork is for use with the BTT SKR 1.4 line of boards. 
+
+For this build I'm using [vscode](https://code.visualstudio.com/) and [platformio](https://platformio.org/).
+
+original README continues below.
+
+
 ## LPC1769GrblDriver
 
 A GrblHAL driver for the NXP LPC176x processors.
@@ -19,4 +28,4 @@ Currently tested running on a OM13085 board with oscilloscope only. Communicatio
 __NOTE:__ earlier commits of this driver are full of bugs! Notably the bitbanding for GPIO is allocated in the SRAM region for this processor, _not_ PERI region...
 
 ---
-2020-08-23
+2020-10-05
