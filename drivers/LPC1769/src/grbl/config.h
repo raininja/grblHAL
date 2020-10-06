@@ -281,7 +281,8 @@
 // Max number of entries in log for PID data reporting, to be used for tuning
 //#define PID_LOG 1000 // Default disabled. Uncomment to enable.
 
-#define ENABLE_BACKLASH_COMPENSATION
+// backlash compensation seems to call in CAN?  so . . . disabling
+// #define ENABLE_BACKLASH_COMPENSATION
 
 // End compile time only default configuration
 

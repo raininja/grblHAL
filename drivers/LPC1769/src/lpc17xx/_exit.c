@@ -1,5 +1,8 @@
-void _exit()
-{
-    while (1)
-        ;
-}
+#include <stdlib.h>
+
+
+void _Exit();
+// {
+//     while (1)
+//         ;
+// }

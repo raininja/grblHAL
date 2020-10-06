@@ -1329,7 +1329,7 @@ void SysTick_Handler (void)
 #if SDCARD_ENABLE
     static uint32_t fatfs_ticks = 10;
     if(!(--fatfs_ticks)) {
-        disk_timerproc();
+        int disk_timerproc();
         fatfs_ticks = 10;
     }
     if(delay.ms && !(--delay.ms)) {
