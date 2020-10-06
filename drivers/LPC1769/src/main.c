@@ -21,7 +21,7 @@
 
 */
 
-#include "GRBL\grbllib.h"
+#include "grbl\grbllib.h"
 
 int main(void)
 {

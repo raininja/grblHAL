@@ -29,12 +29,12 @@
  * this code.
  */
 
- #if defined(NO_BOARD_LIB)
- #include "chip.h"
- #else
- #include "board.h"
- #endif
-
+//  #if defined(NO_BOARD_LIB)
+//  #include "chip.h"
+//  #else
+//  #include "board.h"
+//  #endif
+#include "chip.h"
 /*****************************************************************************
  * Private types/enumerations/variables
  ****************************************************************************/
