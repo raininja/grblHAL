@@ -35,6 +35,7 @@
 #include "my_machine.h"
 #endif
 
+#include "chip.h"
 #include "portmacros.h"
 
 // Configuration

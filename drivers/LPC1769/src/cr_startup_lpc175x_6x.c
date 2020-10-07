@@ -28,6 +28,7 @@
 // copyright, permission, and disclaimer notice must appear in all copies of
 // this code.
 //*****************************************************************************
+#pragma once
 
 #if defined (__cplusplus)
 #ifdef __REDLIB__
@@ -53,10 +54,10 @@ extern "C" {
 #endif
 
 //*****************************************************************************
-#if defined (__USE_CMSIS) || defined (__USE_LPCOPEN)
+// #if defined (__USE_CMSIS) || defined (__USE_LPCOPEN)
 // Declaration of external SystemInit function
 extern void SystemInit(void);
-#endif
+// #endif
 
 //*****************************************************************************
 //

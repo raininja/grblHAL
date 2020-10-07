@@ -707,7 +707,7 @@ void settings_changed (settings_t *settings)
 
         stepperEnable(settings->steppers.deenergize);
 
-        if(hal.driver_cap.variable_spindle) {
+        if(hal.driver_cap.variable_spindle) { // is this using double edge PWM?? as in the two pins in question?
             pwm_init(&SPINDLE_PWM_CHANNEL, SPINDLE_PWM_USE_PRIMARY_PIN, SPINDLE_PWM_USE_SECONDARY_PIN, spindle_pwm.period, 0);
             hal.spindle_set_state = spindleSetStateVariable;
         } else

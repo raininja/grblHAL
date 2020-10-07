@@ -32,7 +32,7 @@
 
 // Number of axes supported: minimum 3, maximum 6
 // If more than 3 axes are required a compliant driver must be provided
-#define N_AXIS 4 // Number of axes
+// #define N_AXIS 4 // Number of axes
 
 // Defines compatibility level with the grbl 1.1 protocol.
 // Additional G- and M-codes are not disabled except when level is set to >= 10.
