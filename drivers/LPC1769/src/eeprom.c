@@ -48,8 +48,8 @@ static I2C_XFER_T xfer;
 
 void eepromInit (void)
 {
-    Chip_IOCON_PinMuxSet(LPC_IOCON, 0, 19, IOCON_MODE_INACT, IOCON_FUNC3);
-    Chip_IOCON_PinMuxSet(LPC_IOCON, 0, 20, IOCON_MODE_INACT, IOCON_FUNC3);
+    Chip_IOCON_PinMuxSet(LPC_IOCON, 0, 19, IOCON_MODE_INACT | IOCON_FUNC3);
+    Chip_IOCON_PinMuxSet(LPC_IOCON, 0, 20, IOCON_MODE_INACT | IOCON_FUNC3);
     Chip_IOCON_EnableOD(LPC_IOCON, 0, 19);
     Chip_IOCON_EnableOD(LPC_IOCON, 0, 20);
 

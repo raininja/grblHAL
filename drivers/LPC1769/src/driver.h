@@ -40,18 +40,19 @@
 
 // Configuration
 // Set value to 1 to enable, 0 to disable
+// will not build without these enabled 07_OCT_2020 SKR 1.4 config
 
 #ifndef USB_SERIAL_CDC
-#define USB_SERIAL_CDC      0 // for UART comms
+#define USB_SERIAL_CDC      1 // for UART comms
 #endif
 #ifndef SDCARD_ENABLE
-#define SDCARD_ENABLE       0
+#define SDCARD_ENABLE       1
 #endif
 #ifndef EEPROM_ENABLE
-#define EEPROM_ENABLE       0
+#define EEPROM_ENABLE       1
 #endif
 #ifndef EEPROM_IS_FRAM
-#define EEPROM_IS_FRAM      0
+#define EEPROM_IS_FRAM      1
 #endif
 
 // Define GPIO output mode options
@@ -68,16 +69,19 @@
 // NOTE:
 // P0.27, P0.28 are dedicated I2C pins without pull up/down.
 // P0.29, P0.30 must have same direction as used for USB operation.
+// THIS NOTE HAS NOT BEEN APPLIED YET
 
-#ifdef SMOOTHIEBOARD
-    #include "smoothieboard_map.h"
-#elif defined(BOARD_RAMPS_16)
-    #include "ramps_1.6_map.h"
-#elif defined(BOARD_BTT_SKR_14)
-    #include "btt_skr_1_4_map.h"
-#else
-    #include "generic_map.h"
-#endif
+// #ifdef SMOOTHIEBOARD
+//     #include "smoothieboard_map.h"
+// #elif defined(BOARD_RAMPS_16)
+//     #include "ramps_1.6_map.h"
+// #elif defined(BOARD_BTT_SKR_14)
+//     #include "btt_skr_1_4_map.h"
+// #else
+//     #include "generic_map.h"
+// #endif
+// for test purposes we hard encode SKR board support
+#include "btt_skr_1_4_map.h"
 
 // Adjust STEP_PULSE_LATENCY to get accurate step pulse length when required, e.g if using high step rates.
 // The default value is calibrated for 10 microseconds length.

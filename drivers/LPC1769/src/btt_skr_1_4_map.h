@@ -4,7 +4,8 @@
 
   Part of GrblHAL
 
-  Copyright (c) 2019-2020 Terje Io, denkijin
+  Copyright (c) 2019-2020 Terje Io
+  Copyright (c) 2020 raininja
 
   Mappings experimental
 
@@ -23,12 +24,10 @@
 */
 
 #define BOARD_NAME "BTT SKR 1.4"
+
 //
 // Steppers
-//  commented defines are imported from Marlin for pins
-//  Quite unsure how the defined variables in GrblHAL relate to
-//  those as defined in Marlin
-//  maybe OP has insight?
+//  --  commented defines are imported from Marlin for pins
 
 // Define step pulse output pins.
 
@@ -38,7 +37,7 @@
 // grammar below imported from ramps_1.6_map.h
 // #define X_STEP_PIN       P2.02
 #define X_STEP_PN           2
-#define X_STEP_PORT         port(X_STEP_PN) //what
+#define X_STEP_PORT         port(X_STEP_PN)
 #define X_STEP_PIN          2
 #define X_STEP_BIT          (1<<X_STEP_PIN)
 
@@ -300,7 +299,7 @@ PIN: 0.10        <unused/unknown>     SDA2              Input  = 1
 #define CYCLE_START_BIT     (1<<CYCLE_START_PIN)
 #define SAFETY_DOOR_BIT     (1<<SAFETY_DOOR_PIN)
 #define CONTROL_MASK        (RESET_BIT|FEED_HOLD_BIT|CYCLE_START_BIT|SAFETY_DOOR_BIT)
-//#define CONTROL_SHIFT       GPIO_SHIFT0 // Uncomment and set shift value if pins are consecutive and ordered
+#define CONTROL_SHIFT       GPIO_SHIFT0 // Uncomment and set shift value if pins are consecutive and ordered
 #define CONTROL_INMODE GPIO_BITBAND
 
 // #define RESET_PORT_PN       0
