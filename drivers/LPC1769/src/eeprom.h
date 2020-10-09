@@ -22,7 +22,7 @@
   along with Grbl.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-#pragma once
+// #pragma once
 #ifndef __EEPROM_H__
 #define __EEPROM_H__
 

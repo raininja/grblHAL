@@ -28,7 +28,7 @@
 // copyright, permission, and disclaimer notice must appear in all copies of
 // this code.
 //*****************************************************************************
-#pragma once
+// #pragma once
 
 #if defined (__cplusplus)
 #ifdef __REDLIB__

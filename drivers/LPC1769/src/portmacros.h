@@ -27,6 +27,7 @@
 * Definitions for bit band access                                             *
 ******************************************************************************/
 
+
 /* Bit band SRAM and GPIO definitions */
 #define BITBAND_SRAM_REF   0x20000000
 #define BITBAND_SRAM_BASE  0x22000000

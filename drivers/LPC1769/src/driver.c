@@ -685,6 +685,8 @@ static void gpio2_int_enable (uint32_t bit, gpio_intr_t intr_type)
 }
 
 // Configures peripherals when settings are initialized or changed
+// this is the problematic function in linking
+
 void settings_changed (settings_t *settings)
 {
     hal.driver_cap.variable_spindle = spindle_precompute_pwm_values(&spindle_pwm, SystemCoreClock / Chip_Clock_GetPCLKDiv(SYSCTL_PCLK_PWM1));
@@ -1032,6 +1034,7 @@ static bool driver_setup (settings_t *settings)
 
 // Initialize HAL pointers, setup serial comms and enable EEPROM
 // NOTE: Grbl is not yet configured (from EEPROM data), driver_setup() will be called when done
+// does not compile, throws error concerning clock signals from chip.h
 
 bool driver_init (void) {
 

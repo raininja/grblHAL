@@ -43,3 +43,4 @@ drivers/LPC1769/src/sdcard/sdcard.*
 .vscode
 build/
 output.map
+include/

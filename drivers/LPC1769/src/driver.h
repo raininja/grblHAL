@@ -24,6 +24,7 @@
 //
 // NOTE: do NOT change configuration here - edit my_machine.h instead!
 //
+#pragma once
 
 #ifndef __DRIVER_H__
 #define __DRIVER_H__
@@ -35,7 +36,7 @@
 #include "my_machine.h"
 #endif
 
-#include "chip.h"
+// #include "chip.h"
 #include "portmacros.h"
 
 // Configuration
