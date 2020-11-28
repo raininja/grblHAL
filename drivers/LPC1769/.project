@@ -4,6 +4,7 @@
 	<comment></comment>
 	<projects>
 		<project>CMSIS_CORE_LPC17xx</project>
+		<project>lpc_chip_175x_6x</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -23,11 +24,17 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
+		<buildCommand>
+			<name>com.nxp.mcuxpresso.addons.sdkbuilder.sdkBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.cdt.core.cnature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
+		<nature>com.nxp.mcuxpresso.addons.sdkbuilder.sdkProjectNature</nature>
 	</natures>
 </projectDescription>

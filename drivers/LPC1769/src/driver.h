@@ -44,10 +44,11 @@
 // will not build without these enabled 07_OCT_2020 SKR 1.4 config
 
 #ifndef USB_SERIAL_CDC
-#define USB_SERIAL_CDC      1 // for UART comms
+#define USB_SERIAL_CDC      1 // for UART comms ??
+// my_machine.h states to comment out USB_SERIAL_CDC for UART comms??
 #endif
 #ifndef SDCARD_ENABLE
-#define SDCARD_ENABLE       1
+#define SDCARD_ENABLE       0
 #endif
 #ifndef EEPROM_ENABLE
 #define EEPROM_ENABLE       1
